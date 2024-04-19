@@ -50,4 +50,3 @@ class Television:
             return f"Power=[{self.__status}], Channel=[{self.__channel}], Volume=[0]"
         else:
             return f"Power=[{self.__status}], Channel=[{self.__channel}], Volume=[{self.__volume}]"
-#test
