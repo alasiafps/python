@@ -36,10 +36,10 @@ class Television:
         :return: None
         """
         if self.__status:
-            if self.__channel == self.MAX_CHANNEL:
-                self.__channel = self.MIN_CHANNEL
-            else:
+            if self.__channel < self.MAX_CHANNEL:
                 self.__channel += 1
+            else:
+                self.__channel = Television.MIN_CHANNEL
 
     def channel_down(self) -> None:
         """
@@ -48,10 +48,10 @@ class Television:
         :return:
         """
         if self.__status:
-            if self.__channel == self.MIN_CHANNEL:
-                self.__channel = self.MAX_CHANNEL
-            else:
+            if self.__channel > self.MIN_CHANNEL:
                 self.__channel -= 1
+            else:
+                self.__channel = Television.MAX_CHANNEL
 
     def volume_up(self) -> None:
         """
@@ -60,10 +60,9 @@ class Television:
         :return: None
         """
         if self.__status:
-            if self.__volume < self.MAX_VOLUME:
+            self.__muted = False
+            if self.__volume < Television.MAX_VOLUME:
                 self.__volume += 1
-            if self.__muted:
-                self.__muted = False
 
     def volume_down(self) -> None:
         """
@@ -72,10 +71,9 @@ class Television:
         :return:
         """
         if self.__status:
-            if self.__volume > self.MIN_VOLUME:
+            self.__muted = False
+            if self.__volume > Television.MIN_VOLUME:
                 self.__volume -= 1
-            if self.__muted:
-                self.__muted = False
 
     def __str__(self) -> str:
         """
